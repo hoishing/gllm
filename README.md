@@ -9,7 +9,7 @@
 - global install using [uv]
 
 ```bash
-uv tool install gllm
+uv tool install gllm-cli
 ```
 
 ## Configuration

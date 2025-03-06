@@ -1,7 +1,7 @@
 [project]
-name = "gllm"
-version = "0.1.0"
-description = "Add your description here"
+name = "gllm-cli"
+version = "0.1.2"
+description = "A CLI tool that uses Groq LLM to generate terminal commands from natural language descriptions."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["click>=8.1.8", "groq>=0.16.0", "python-dotenv>=1.0.1"]
@@ -25,11 +25,7 @@ text = "MIT"
 
 [project.urls]
 "License" = "https://opensource.org/licenses/MIT"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-addopts = "-v --cov=gllm --cov-report=term-missing"
+repository = "https://github.com/hoishing/gllm"
 
 [dependency-groups]
 dev = ["pytest>=8.3.4", "pytest-cov>=6.0.0", "pytest-mock>=3.14.0"]
