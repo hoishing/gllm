@@ -1,8 +1,8 @@
 # GLLM
 
-[![ruff-badge]][ruff][![ci-badge]][ci-url]![py-ver-badge]![MIT][![uv-badge]][uv]
+[![ruff-badge]][ruff]![py-ver-badge]![MIT][![uv-badge]][uv]
 
-> A command-line interface tool that uses [Groq] LLM to generate terminal commands from natural language descriptions.
+> A CLI tool that uses [Groq] LLM to generate terminal commands from natural language descriptions.
 
 ## Installation
 
@@ -74,8 +74,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Open a [github issue] or ping me on [X ![x-icon]][X]
 
-[ci-badge]: https://github.com/hoishing/gllm/actions/workflows/ci.yml/badge.svg
-[ci-url]: https://github.com/hoishing/gllm/actions/workflows/ci.yml
 [github issue]: https://github.com/hoishing/gllm/issues
 [Groq model]: https://console.groq.com/docs/models
 [Groq]: https://console.groq.com/docs
