@@ -1,6 +1,6 @@
 [project]
 name = "gllm-cli"
-version = "0.1.2"
+version = "0.1.3"
 description = "A CLI tool that uses Groq LLM to generate terminal commands from natural language descriptions."
 readme = "README.md"
 requires-python = ">=3.12"

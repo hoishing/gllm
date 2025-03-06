@@ -1,6 +1,6 @@
 # GLLM
 
-[![ruff-badge]][ruff]![py-ver-badge]![MIT][![uv-badge]][uv]
+[![ruff-badge]][ruff] [![pypi-badge]][pypi-url] ![MIT] [![uv-badge]][uv]
 
 > A CLI tool that uses [Groq] LLM to generate terminal commands from natural language descriptions.
 
@@ -66,22 +66,18 @@ To set up the development environment:
    source .venv/bin/activate
    ```
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Questions?
 
-Open a [github issue] or ping me on [X ![x-icon]][X]
+Open a [github issue] or ping me on [X]
 
 [github issue]: https://github.com/hoishing/gllm/issues
 [Groq model]: https://console.groq.com/docs/models
 [Groq]: https://console.groq.com/docs
 [MIT]: https://img.shields.io/github/license/hoishing/gllm
-[py-ver-badge]: https://img.shields.io/pypi/pyversions/gllm
+[pypi-badge]: https://img.shields.io/pypi/v/gllm-cli
+[pypi-url]: https://pypi.org/project/gllm-cli/
 [ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
 [ruff]: https://github.com/astral-sh/ruff
 [uv-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
 [uv]: https://docs.astral.sh/uv/
-[x-icon]: https://api.iconify.design/logos/x.svg?width=20
 [X]: https://x.com/intent/tweet?text=https://github.com/hoishing/gllm/%20%0D@hoishing
