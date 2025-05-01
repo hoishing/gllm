@@ -1,10 +1,18 @@
 """Command line interface for GLLM."""
 
 import click
-from . import core
+from . import __version__, core
 
 SYSTEM_PROMPT = "Help the user to create a macOS (not Linux) terminal command based on the user request. Only reply with the terminal command, no other text."
 DEFAULT_MODEL = "gemini-2.0-flash-lite"
+
+
+def version_callback(ctx: click.Context, param: click.Parameter, value: bool) -> None:
+    """Show version and exit."""
+    if not value or ctx.resilient_parsing:
+        return
+    click.echo(f"gllm {__version__}")
+    ctx.exit()
 
 
 @click.command()
@@ -19,8 +27,16 @@ DEFAULT_MODEL = "gemini-2.0-flash-lite"
     default=SYSTEM_PROMPT,
     help="System prompt for the LLM",
 )
+@click.option(
+    "--version",
+    is_flag=True,
+    callback=version_callback,
+    expose_value=False,
+    is_eager=True,
+    help="Show version and exit.",
+)
 def main(request: str, model: str, system_prompt: str) -> None:
-    """Get terminal command suggestions using Groq LLM.
+    """Get terminal command suggestions using Google Gemini.
 
     REQUEST is your natural language description of the command you need.
     """
