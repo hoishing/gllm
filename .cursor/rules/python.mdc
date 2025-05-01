@@ -1,12 +1,8 @@
 ---
 description: python styles
 globs: *.py
+alwaysApply: false
 ---
-# dependencies
-
-- groq python library
-- docs url: https://console.groq.com/docs/api-reference
-
 # Python Style
 
 - use python 3.12 or above

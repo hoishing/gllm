@@ -4,7 +4,7 @@ import click
 from . import core
 
 SYSTEM_PROMPT = "Help the user to create a macOS (not Linux) terminal command based on the user request. Only reply with the terminal command, no other text."
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_MODEL = "gemini-2.0-flash-lite"
 
 
 @click.command()
@@ -12,7 +12,7 @@ DEFAULT_MODEL = "llama-3.3-70b-versatile"
 @click.option(
     "--model",
     default=DEFAULT_MODEL,
-    help="Groq model to use",
+    help="Gemini model to use",
 )
 @click.option(
     "--system-prompt",

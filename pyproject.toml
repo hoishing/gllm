@@ -1,10 +1,10 @@
 [project]
 name = "gllm-cli"
-version = "0.1.3"
-description = "A CLI tool that uses Groq LLM to generate terminal commands from natural language descriptions."
+version = "0.2.0"
+description = "A CLI tool that uses Google Gemini to generate terminal commands from natural language descriptions."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["click>=8.1.8", "groq>=0.16.0", "python-dotenv>=1.0.1"]
+dependencies = ["click", "google-genai", "python-dotenv"]
 
 [project.scripts]
 gllm = "gllm.cli:main"
@@ -18,7 +18,7 @@ packages = ["src/gllm"]
 
 [tool.ruff]
 isort.no-sections = true
-extend-ignore = ["E203", "E402", "E501", "F401", "F811"]
+extend-ignore = ["E203", "E402", "E501", "E712", "F401", "F811"]
 
 [project.license]
 text = "MIT"
@@ -26,6 +26,3 @@ text = "MIT"
 [project.urls]
 "License" = "https://opensource.org/licenses/MIT"
 repository = "https://github.com/hoishing/gllm"
-
-[dependency-groups]
-dev = ["pytest>=8.3.4", "pytest-cov>=6.0.0", "pytest-mock>=3.14.0"]

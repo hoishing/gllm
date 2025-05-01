@@ -2,20 +2,20 @@
 
 import os
 from dotenv import load_dotenv
-from groq import Groq
+from google.genai import Client, types
 
 
 def get_command(
     user_prompt: str,
-    model: str = "llama-3.3-70b-versatile",
-    system_prompt: str = "Help the user to create a terminal command based on the user request.",
+    model: str,
+    system_prompt: str,
 ) -> str:
     """
-    Get terminal command suggestion from Groq LLM.
+    Get terminal command suggestion from Gemini LLM.
 
     Args:
         user_prompt: The user's request for a terminal command
-        model: The Groq model to use
+        model: The Gemini model to use
         system_prompt: The system prompt for the LLM
 
     Returns:
@@ -24,16 +24,13 @@ def get_command(
     # Load environment variables
     load_dotenv()
 
-    # Initialize Groq client
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    # Initialize gemini client
+    client = Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-    # Create chat completion
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
+    response = client.models.generate_content(
         model=model,
+        contents=user_prompt,
+        config=types.GenerateContentConfig(system_instruction=system_prompt),
     )
 
-    return chat_completion.choices[0].message.content
+    return response.text
