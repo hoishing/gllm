@@ -1,14 +1,15 @@
 """Core functionality for the GLLM package."""
 
 import os
-from dotenv import load_dotenv
-from google.genai import Client, types
+from google.genai import Client
+from google.genai.types import GenerateContentConfig
 
 
 def get_command(
-    user_prompt: str,
+    user_prompt: tuple[str, ...],
     model: str,
     system_prompt: str,
+    key: str | None = None,
 ) -> str:
     """
     Get terminal command suggestion from Gemini LLM.
@@ -21,16 +22,19 @@ def get_command(
     Returns:
         str: The suggested terminal command
     """
-    # Load environment variables
-    load_dotenv()
 
     # Initialize gemini client
-    client = Client(api_key=os.getenv("GEMINI_API_KEY"))
+    if not (api_key := key or os.getenv("GOOGLE_API_KEY")):
+        raise ValueError("No API key provided. Please set the GOOGLE_API_KEY environment variable or pass the --key option.")
+
+    client = Client(api_key=api_key)
 
     response = client.models.generate_content(
         model=model,
         contents=user_prompt,
-        config=types.GenerateContentConfig(system_instruction=system_prompt),
+        config=GenerateContentConfig(
+            system_instruction=system_prompt,
+        ),
     )
 
     return response.text

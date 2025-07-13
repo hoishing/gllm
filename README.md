@@ -14,12 +14,12 @@ uv tool install gllm-cli
 
 ## Configuration
 
-GLLM requires a Google [Gemini API key]. You can set it up in two ways:
+GLLM requires a Google [Google API key]. You can set it up in two ways:
 
-1. Create a `.env` file in your working directory:
+1. provided by `--key` option
 
-   ```ini
-   GEMINI_API_KEY=your-api-key-here
+   ```bash
+   gllm --key=YOUR_GEMINI_API_KEY your prompt
    ```
 
 2. Set it as an environment variable:
@@ -36,8 +36,8 @@ After installation, you can use the `gllm` command directly from your terminal:
 # Basic usage
 gllm "list all files in the current directory"
 
-# Use a different model, default to `gemini-2.0-flash-lite`
-gllm --model "gemini-2.5-flash-preview-04-17" "show disk usage"
+# Use a different model, default to `gemini-2.5-flash`
+gllm --model "gemini-2.5-pro" "show disk usage"
 
 # Customize the system prompt
 gllm --system-prompt "Generate PowerShell commands" "create a new directory"
@@ -45,34 +45,19 @@ gllm --system-prompt "Generate PowerShell commands" "create a new directory"
 
 ### Options
 
-- `REQUEST`: Your natural language description of the command you need
-- `--model`: [Gemini model] to use (default: gemini-2.0-flash-lite)
+- `--model`: [Gemini model] to use (default: gemini-2.5-flash)
 - `--system-prompt`: System prompt for the LLM
+- `--key`: your gemini api key
 
-## Development
+## Questions
 
-To set up the development environment:
+- [Github issue]
+- [LinkedIn]
 
-1. Clone the repository
-2. Install development dependencies:
-
-   ```bash
-   uv sync
-   ```
-
-3. Activate the development environment:
-
-   ```bash
-   source .venv/bin/activate
-   ```
-
-## Questions?
-
-Open a [github issue]
-
-[Gemini API key]: https://ai.google.dev/gemini-api/docs/api-key
 [Gemini model]: https://ai.google.dev/gemini-api/docs/models
-[github issue]: https://github.com/hoishing/gllm/issues
+[Github issue]: https://github.com/hoishing/gllm/issues
+[Google API key]: https://ai.google.dev/gemini-api/docs/api-key
+[LinkedIn]: https://www.linkedin.com/in/kng2
 [MIT]: https://img.shields.io/github/license/hoishing/gllm
 [pypi-badge]: https://img.shields.io/pypi/v/gllm-cli
 [pypi-url]: https://pypi.org/project/gllm-cli/

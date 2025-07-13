@@ -4,7 +4,7 @@ import click
 from . import __version__, core
 
 SYSTEM_PROMPT = "Help the user to create a macOS (not Linux) terminal command based on the user request. Only reply with the terminal command, no other text."
-DEFAULT_MODEL = "gemini-2.0-flash-lite"
+DEFAULT_MODEL = "gemini-2.5-flash"
 
 
 def version_callback(ctx: click.Context, param: click.Parameter, value: bool) -> None:
@@ -16,7 +16,7 @@ def version_callback(ctx: click.Context, param: click.Parameter, value: bool) ->
 
 
 @click.command()
-@click.argument("request")
+@click.argument("requests", nargs=-1, required=True)
 @click.option(
     "--model",
     default=DEFAULT_MODEL,
@@ -35,16 +35,26 @@ def version_callback(ctx: click.Context, param: click.Parameter, value: bool) ->
     is_eager=True,
     help="Show version and exit.",
 )
-def main(request: str, model: str, system_prompt: str) -> None:
+@click.option(
+    "--key",
+    help="Gemini API key",
+)
+def main(
+    requests: tuple[str, ...], model: str, system_prompt: str, key: str | None = None
+) -> None:
     """Get terminal command suggestions using Google Gemini.
 
-    REQUEST is your natural language description of the command you need.
+    REQUESTS: natural language descriptions of the command
+
+        e.g. `gllm show disk usage`
     """
     try:
+        # print(f"{requests=}")
         response = core.get_command(
-            user_prompt=request,
+            user_prompt=requests,
             model=model,
             system_prompt=system_prompt,
+            key=key,
         )
         click.echo(response)
     except Exception as e:
