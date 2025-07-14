@@ -1,7 +1,7 @@
 [project]
 name = "gllm-cli"
 version = "0.3.0"
-description = "A CLI tool that uses Google Gemini to generate terminal commands from natural language descriptions."
+description = "Generate Terminal Commands from Natural Language with Gemini"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["click", "google-genai"]

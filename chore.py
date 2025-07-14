@@ -1,8 +1,21 @@
+import tomllib
+from pathlib import Path
+
+
+def pyproject_data() -> dict:
+    pyproject_path = Path(__file__).parent / "pyproject.toml"
+    with pyproject_path.open("rb") as f:
+        return tomllib.load(f)
+
+
+metadata = pyproject_data()["project"]
+
+readme_md = """\
 # GLLM
 
 [![ruff-badge]][ruff] [![pypi-badge]][pypi-url] ![MIT] [![uv-badge]][uv]
 
-> Generate Terminal Commands from Natural Language with Gemini
+> {description}
 
 ## Installation
 
@@ -65,3 +78,9 @@ gllm --system-prompt "Generate PowerShell commands" list files in the current di
 [ruff]: https://github.com/astral-sh/ruff
 [uv-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
 [uv]: https://docs.astral.sh/uv/
+"""
+
+
+if __name__ == "__main__":
+    readme_md = readme_md.format(description=metadata["description"])
+    open("README.md", "w").write(readme_md)
